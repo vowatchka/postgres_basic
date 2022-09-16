@@ -1,0 +1,29 @@
+- name: Provision vagrant machine
+  hosts: all
+  gather_facts: no
+  become: yes
+  become_method: sudo
+
+  vars:
+    docker_compose_version: v2.10.2
+
+  tasks:
+    - name: Install packages
+      apt:
+        name:
+          - docker.io
+        state: latest
+        update_cache: true
+
+    # see at https://docs.docker.com/engine/install/linux-postinstall/
+    - name: Manage Docker as a non-root user
+      shell: >
+        groupadd -f docker &&
+        usermod -aG docker vagrant &&
+        newgrp docker
+
+    # see at https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-ru
+    - name: Download docker-compose
+      shell: >
+        curl -L "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+        chmod +x /usr/local/bin/docker-compose

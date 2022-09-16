@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  demodb:
+    build: ./demodb
+    container_name: postgres_basic.demodb
+    environment:
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    restart: always
