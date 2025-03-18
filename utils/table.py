@@ -34,6 +34,10 @@ def sqlalchemy_table(rows: CursorResult | Iterable[Row]):
         if idx == 0:
             headers = tuple(dict(row).keys())
 
+        # Если заголовков меньше, чем значений в строке, то добавляем недостающие заголовки
+        if len(headers) < len(row):
+            headers += tuple(f"{headers[-1]}_{idx}" for idx in range(1, len(row) - len(headers) + 1))
+
         table_data.append(tuple(row))
 
     table(table_data, headers)
