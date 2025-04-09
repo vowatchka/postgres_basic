@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/focal64"
 
     config.vm.network "forwarded_port", guest: 5432, host: 54320
+    config.vm.network "forwarded_port", guest: 8888, host: 18888
 
     config.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]

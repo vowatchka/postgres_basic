@@ -11,3 +11,14 @@ services:
     ports:
       - 5432:5432
     restart: always
+
+  notebook:
+    build: ./gophernotes
+    container_name: postgres_basic.gophernotes
+    ports:
+      - 8888:8888
+    volumes:
+      - /vagrant/practices:/home/jovyan/notebooks
+      - /vagrant/utils:/home/jovyan/utils
+      - /vagrant/utilsgo:/home/jovyan/utilsgo
+    restart: always
