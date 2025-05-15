@@ -1,3 +1,5 @@
+// Full copy from https://github.com/iotdog/json2table
+
 package j2t
 
 import (
