@@ -23,3 +23,11 @@ func Table(tableData any, headers []string) (string, error) {
         return "", errors.New("failed to convert table data to html table")
     }
 }
+
+func ColNamesToAny(col_names []string) []any {
+    col_names_any := make([]any, len(col_names))
+    for i, v := range col_names {
+        col_names_any[i] = v
+    }
+    return col_names_any
+}
