@@ -10,5 +10,6 @@ require (
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a
 	golang.org/x/crypto v0.17.0
 	github.com/jackc/puddle/v2 v2.2.1
+	github.com/lib/pq v1.10.9
 	golang.org/x/sync v0.1.0
 )
